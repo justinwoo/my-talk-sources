@@ -1,0 +1,27 @@
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+use feature qw(say);
+
+if ($#ARGV < 0) {
+  say "please specify a talk to build.";
+  say "e.g. build 2018-12-04-nix-ify-your-psc-package-dependencies/";
+  exit 1;
+}
+
+my $target = $ARGV[0];
+$target =~ s/\///g;
+
+my $source = "$target/source.md";
+my $output = "$target/output.pdf";
+
+my $cmd = "pandoc -t beamer $source -o $output";
+system $cmd;
+
+if ($? == 0) {
+  say "produced $output";
+} else {
+  say "pandoc process errored";
+  exit 1;
+}
