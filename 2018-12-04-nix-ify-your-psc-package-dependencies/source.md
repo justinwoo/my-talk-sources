@@ -241,7 +241,7 @@ This also means that I will want to copy them once over per installation and not
 The easy way to do this:
 
 ```sh
-nix-shell install-deps.nix --run 'installation complete'
+nix-shell install-deps.nix --run 'echo installation complete'
 ```
 
 ## install-deps.nix
